@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table {
+        width: 100%;
+    }
+
+    .td {
+        text-align: center;
+    }
+</style>
+<body>
+<form action="/search" method="get">
+    <input type="text" name="search">
+    <input type="submit" value="search">
+</form>
+<a href="/create/product">Create Product</a>
+<table border="1" class="td">
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    <tr th:each="p:${pageProduct}">
+        <td th:utext="${p.id}"></td>
+        <td th:utext="${p.name}"></td>
+        <td th:utext="${p.price}"></td>
+    </tr>
+</table>
+<div>
+    <div>
+        <a th:href="@{'/product'(page=${pageProduct.number -1})}" th:if="${pageProduct.hasPrevious()}">Back</a>
+        <span th:utext="${pageProduct.number+1}"></span>/<span th:utext="${pageProduct.totalPages}"></span>
+        <a th:href="@{'/product'(page=${pageProduct.number+1})}" th:if="${pageProduct.hasNext()}">Next</a>
+    </div>
+</div>
+</body>
+</html>
