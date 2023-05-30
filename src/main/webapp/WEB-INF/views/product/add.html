@@ -6,12 +6,12 @@
     <title>Add Product</title>
 </head>
 <body>
-<form action="/create/product" method="post" th:object="${createProductForm}">
+<form th:action="@{/create/product}" method="post" th:object="${createProductForm}">
     <label>Name</label>
-    <span style="color: red" th:if="${#fields.hasErrors('name')}" th:error="*{name}">The name must more than 2 and less than 10 and not required!</span><br>
+    <span style="color: red" th:if="${#fields.hasErrors('name')}" th:error="*{name}">The name must more than 2 and less than 10 and not required!</span>
     <input type="text" name="name" th:field="*{name}"><br>
     <label>Price</label>
-    <span style="color: red" th:if="${#fields.hasErrors('price')}" th:error="*{price}">The price is more than 18</span><br>
+    <span style="color: red" th:if="${#fields.hasErrors('price')}" th:error="*{price}">The price is more than 18</span>
     <input type="text" name="age" th:field="*{price}"><br>
     <button type="submit">Create</button>
 </form>

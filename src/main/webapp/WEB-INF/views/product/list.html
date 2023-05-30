@@ -14,11 +14,11 @@
     }
 </style>
 <body>
-<form action="/search" method="get">
+<form th:action="@{/search}" method="get">
     <input type="text" name="search">
     <input type="submit" value="search">
 </form>
-<a href="/create/product">Create Product</a>
+<a th:href="@{/create/product}" >Create Product</a>
 <table border="1" class="td">
     <tr>
         <th>STT</th>
@@ -38,5 +38,6 @@
         <a th:href="@{'/product'(page=${pageProduct.number+1})}" th:if="${pageProduct.hasNext()}">Next</a>
     </div>
 </div>
+
 </body>
 </html>
